@@ -1,0 +1,5 @@
+<% if @product.order %>
+  <h1><%= @product.name %> has <%= @product.order.name %> order </h1>
+<% else %>
+  <h1> <%= @product.name %> has no order </h1>
+<% end %>

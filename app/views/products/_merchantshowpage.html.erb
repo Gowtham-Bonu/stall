@@ -1,0 +1,13 @@
+<% if @product.order %>
+  <h1>Details of the <%= @product.order.name %> for <%= @product.name %>:</h1>
+  <dl>
+    <dt>Name:</dt>
+    <dd><%= @product.order.name %></dd>
+    <dt>Quantity:</dt>
+    <dd><%= @product.order.quantity %></dd>
+    <dt>Status:</dt>
+    <dd><%= @product.order.status %></dd>
+  </dl>
+<% else %>
+  <p>No order's placed</p>
+<% end %>

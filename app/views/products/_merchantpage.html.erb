@@ -1,0 +1,22 @@
+<table class="table table-dark table-striped" >
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Brand</th>
+      <th>Availability</th>
+      <th>Order</th>
+    </tr>  
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.cost %></td>
+        <td><%= product.brand %></td>
+        <td><%= product.availability %></td>
+        <td><button class=" btn btn-light"><%= link_to "order", new_product_order_path(product) %></button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

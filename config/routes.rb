@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'products/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
+  resources :products do
+    resources :orders, only: [:new, :create]
+  end
   root "products#index"
 end
