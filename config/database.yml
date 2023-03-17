@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: stalls_development
+  pool: 5
+  host: localhost
+  username: postgres
+  password: Gow@0000
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: stalls__test
+  pool: 5
+  username: postgres
+  password: Gow@0000
+
+staging:
+  url: <%= ENV['DATABASE_URL'] %>
+
+production:
+  url: <%= ENV['DATABASE_URL'] %> 
