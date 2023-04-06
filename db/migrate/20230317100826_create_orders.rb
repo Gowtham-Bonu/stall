@@ -4,8 +4,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :quantity
       t.string :status
-      t.belongs_to :product
-
+      t.belongs_to :user
       t.timestamps
     end
   end

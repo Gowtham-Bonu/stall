@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_100826) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_06_120113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,10 +18,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_100826) do
     t.string "name"
     t.integer "quantity"
     t.string "status"
-    t.bigint "product_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "orders_products", id: false, force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.index ["order_id"], name: "index_orders_products_on_order_id"
+    t.index ["product_id"], name: "index_orders_products_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -29,11 +36,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_100826) do
     t.integer "cost"
     t.string "brand"
     t.boolean "availability"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "roles"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -1,6 +1,6 @@
 <h1>New Order</h1>
 <%= form_with model: @order, url: product_orders_path do |form| %>
-    <%= form.hidden_field :product_id, value: params[:product_id] %>
+   <%= form.hidden_field :user_id, value: current_user.id %>
     <div class="card container" >
       <div class="card-body" >
          <div class="mb-3" >
