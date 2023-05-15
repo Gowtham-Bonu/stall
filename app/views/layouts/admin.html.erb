@@ -12,17 +12,18 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p> 
-    <p class="alert"><%= alert %></p> 
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
     <% if user_signed_in? %> 
       <div> Welcome <%= current_user.email %> </div> 
-        <% if user_signed_in? %> 
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-light" %> 
-        <% else %>
-          <%= button_to "Sign in", new_user_session_path, class: "btn btn-dark" %> 
-        <% end %>
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-light" %> 
         <%= yield %>
       </div>
+    <% else %>
+      <%= button_to "Sign in", new_user_session_path, class: "btn btn-dark" %> 
     <% end %>
   </body>
 </html>

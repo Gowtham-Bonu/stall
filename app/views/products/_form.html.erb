@@ -1,32 +1,31 @@
 <%= form_with model: product do |form| %>
-   <%= form.hidden_field :user_id, value: current_user.id %>
-    <div class="card container" >
-      <div class="card-body" >
-         <div class="mb-3" >
-            <%= form.label :name, {class: "form-label"} %><br>
-            <%= form.text_field :name, {class: "form-control", placeholder: "Name"}  %>
-            <% product.errors.full_messages_for(:name).each do |message| %>
-              <div><%= message %></div>
-            <% end %>
-         </div>
-         <div class="mb-3" >
-            <%= form.label :cost, {class: "form-label"} %><br>
-            <%= form.number_field :cost, {class: "form-control", placeholder: "Cost"}  %>
-            <% product.errors.full_messages_for(:name).each do |message| %>
-               <div><%= message %></div>
-             <% end %>
-         </div>
-          <div class="mb-3" >
-             <%= form.label :brand, {class: "form-label"} %><br>
-             <%= form.text_field :brand, {class: "form-control", placeholder: "brand"}  %>
-          </div>
-         <div class="mb-3" >
-            <%= form.label :availability, {class: "form-label"} %><br>
-            <%= form.check_box :availability %>
-         </div>
-          <div>
-             <%= form.submit %>
-          </div>
-       </div>
+  <div class="card container" >
+    <div class="card-body" >
+      <div class="mb-3" >
+        <%= form.label :name, {class: "form-label"} %><br>
+        <%= form.text_field :name, {class: "form-control", placeholder: "Name"}  %>
+        <% product.errors.full_messages_for(:name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <div class="mb-3" >
+        <%= form.label :cost, {class: "form-label"} %><br>
+        <%= form.number_field :cost, {class: "form-control", placeholder: "Cost"}  %>
+        <% product.errors.full_messages_for(:name).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+      </div>
+      <div class="mb-3" >
+        <%= form.label :brand, {class: "form-label"} %><br>
+        <%= form.text_field :brand, {class: "form-control", placeholder: "brand"}  %>
+      </div>
+      <div class="mb-3" >
+        <%= form.label :availability, {class: "form-label"} %><br>
+        <%= form.check_box :availability %>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
     </div>
-    <% end %>
+  </div>
+<% end %>
