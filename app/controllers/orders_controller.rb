@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      redirect_to root_path
+      redirect_to root_path, flash: "you have successfully updated the order"
     else
       flash.now[:alert] = [@order.errors.full_messages].join(",") 
       render :edit, status: :unprocessable_entity
