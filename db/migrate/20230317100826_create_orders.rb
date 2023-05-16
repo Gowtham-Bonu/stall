@@ -3,7 +3,6 @@ class CreateOrders < ActiveRecord::Migration[7.0]
     create_table :orders do |t|
       t.string :name
       t.integer :quantity
-      t.string :status
       t.belongs_to :user
       t.timestamps
     end

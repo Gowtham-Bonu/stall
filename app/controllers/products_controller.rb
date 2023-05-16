@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
   layout :set_layoyt
 
   before_action :get_product, except: [:create, :new, :index]
-
   before_action :only_admin_can_deal_with_products, except: [:index, :show]
 
   def index
@@ -20,7 +19,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path, notice: "you have successfully created a product"
     else
-      flash.now[:alert] = "product is not created! Try doing again.."
+      flash.now[:alert] = [@product.errors.full_messages].join(", ")
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,7 +30,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to root_path, notice: "you have successfully updated the product"
     else
-      flash.now[:alert] = "product is not updated! Try doing again.."
+      flash.now[:alert] = [@product.errors.full_messages].join(", ")
       render :edit, status: :unprocessable_entity
     end
   end
@@ -40,7 +39,7 @@ class ProductsController < ApplicationController
     if @product.destroy
       flash[:notice] = "you have successfully deleted the product"
     else
-      flash[:alert] = "product's not deleted"
+      flash[:alert] = [@product.errors.full_messages].join(", ")
     end
     redirect_to root_path
   end
@@ -52,7 +51,7 @@ class ProductsController < ApplicationController
     end
 
     def check_for_admin
-      current_user.role == "Admin" ? true : false
+      current_user.role == "Admin"
     end
 
     def only_admin_can_deal_with_products

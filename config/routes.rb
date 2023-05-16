@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resources :products do
-    resources :orders, only: [:new, :create]
+    resources :orders, shallow: true
   end
 end
