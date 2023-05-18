@@ -1,0 +1,19 @@
+<table class="table table-dark table-striped" >
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Quantity</th>
+      <th colspan="2" >action</th>
+    </tr>  
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.name %></td>
+        <td><%= order.quantity %></td>
+        <td><%= link_to "edit", edit_order_path(order), class: " btn btn-light" %></td>
+        <td><%= link_to "Destroy", order_path(order), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: " btn btn-dark" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

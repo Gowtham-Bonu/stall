@@ -1,0 +1,5 @@
+<% if current_user.role == "Admin" %>
+  <%= render "adminshowpage" %>
+<% else %>
+  <%= render "merchantshowpage" %>
+<% end %>

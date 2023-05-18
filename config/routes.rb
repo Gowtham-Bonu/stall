@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  root "products#index"
   devise_for :users
-  get 'products/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "products#index"
+  resources :products do
+    resources :orders, shallow: true
+  end
 end

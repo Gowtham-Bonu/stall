@@ -1,0 +1,24 @@
+<table class="table table-dark table-striped" >
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Brand</th>
+      <th>Availability</th>
+      <th>Order</th>
+      <th>manage orders</th>
+    </tr>  
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.cost %></td>
+        <td><%= product.brand %></td>
+        <td><%= product.availability %></td>
+        <td><%= link_to "order", new_product_order_path(product), class: " btn btn-light" %></td>
+        <td><%= link_to "manage you orders", product_orders_path(product), class: " btn btn-dark" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
